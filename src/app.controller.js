@@ -9,22 +9,11 @@ connectDB()
 
 
 const bootstrap = (app, express) => {
-    const allowedOrigins = ["https://crudsystem32.netlify.app", "https://crud-system-seven.vercel.app"];
-    app.use(
-        cors({
-            origin: function (origin, callback) {
-                if (!origin || allowedOrigins.includes(origin)) {
-                    callback(null, true);
-                } else {
-                    callback(new Error("Not allowed by CORS"));
-                }
-            },
-            methods: "GET,POST,PUT,DELETE",
-            allowedHeaders: "Content-Type,Authorization",
-            credentials: true,
-        })
-    );
-    app.options("*", cors()); 
+    app.use(cors({
+        origin: '*',
+        methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        credentials: true
+    }));
     app.use(express.json())
     app.get('/', (req, res, next) => {
         res.send('Hello World!');
