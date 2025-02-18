@@ -12,7 +12,7 @@ const bootstrap = (app, express) => {
 
     app.use(cors({
         origin: '*',  // السماح فقط من هذا الدومين
-        methods: ['GET', 'POST', 'PUT'],  // السماح بهذه الطرق
+        methods: '*',  // السماح بهذه الطرق
         allowedHeaders: ['Content-Type',"Authorization"]  // السماح بهذا الـ header
     }));
     app.options('*', cors());  // السماح بـ OPTIONS requests
